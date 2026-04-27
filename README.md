@@ -10,7 +10,7 @@
 #
 ## **Clasificación de Matrícula Educativa (Mujeres)**
 
-Este proyecto compara 8 modelos clasificadores de aprendizaje supervisado para predecir si una mujer se matricula en educación primaria, basándose en un conjunto de indicadores educativos globales (datos_educativos.csv). Los modelos clasificadores utilizados fueron: Árboles de Decisión, SVM, Random Forest, Regresión Logística, KNN, Naive Bayes y XGBoost.
+Este proyecto compara 8 modelos clasificadores de aprendizaje supervisado para predecir si una mujer se matricula en educación primaria, basándose en un conjunto de indicadores educativos globales (datos_educativos.csv). Los modelos clasificadores utilizados fueron: Árboles de Decisión, SVM, Random Forest, Regresión Logística, KNN, Naive Bayes, SVC y XGBoost.
 
 ### 📝 Descripción del Problema
 
@@ -54,7 +54,7 @@ El flujo de trabajo aplicado sigue las siguientes etapas:
 
     Insight Educativo: El análisis confirma que la estabilidad del sistema educativo es el predictor más fuerte. La variabilidad observada en niveles de secundaria sugiere que la retención en secundaria alta es el eslabón crítico para cerrar la brecha de género en la matrícula educativa.
 
-🛠️ Tecnologías Utilizadas
+### 🛠️ Tecnologías Utilizadas
 
     Python
 
@@ -65,3 +65,25 @@ El flujo de trabajo aplicado sigue las siguientes etapas:
     Seaborn / Matplotlib (Visualización)
 
     XGBoost
+
+#
+
+### Sobre el dataset datos_educativos.csv
+
+El dataset datos_educativos.csv, contiene información educativa que incluye tasas de matrícula. Está estructurado con registros para diferentes países, años y tipos de datos educativos, junto con la tasa correspondiente y la fuente de los datos.
+
+Origen: Los datos fueron recolectados del archivo datos_educativos.csv.
+
+Documentación del Dataset de Datos Educativos de la ONU
+
+https://www.kaggle.com/datasets/isabelocastillo/datos-educativos-globales/data
+
+Variables Disponibles: Las variables disponibles en el dataset original son:
+- Índice: Un identificador numérico de fila.
+- ID: Un identificador numérico.
+- País: La variable categórica que representa el país.
+- Año: El año del registro de la tasa.
+- Tipo de Dato Educativo: La categoría específica de la tasa educativa (ej. Tasa Matrícula Primaria (Mujeres)).
+- Tasa: El valor numérico de la tasa educativa.
+- Fuente Datos: La fuente de donde se obtuvo el dato educativo.
+
