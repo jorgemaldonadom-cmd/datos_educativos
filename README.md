@@ -9,12 +9,14 @@
 
 #
 ## **Clasificación de Matrícula Educativa (Mujeres)**
-
+<div align="justify">
 Este proyecto compara 8 modelos clasificadores de aprendizaje supervisado para predecir si una mujer se matricula en educación primaria, basándose en un conjunto de indicadores educativos globales (datos_educativos.csv). Los modelos clasificadores utilizados fueron: Árboles de Decisión, SVM, Random Forest, Regresión Logística, KNN, Naive Bayes, SVC y XGBoost.
+</div>
 
 ### 📝 Descripción del Problema
-
+<div align="justify">
 El desafío consiste en clasificar la probabilidad de matrícula educativa femenina. Se utiliza la tasa de matrícula primaria como referencia: si es superior a la mediana global, se etiqueta como "1" (se matricula), de lo contrario como "0". El objetivo es identificar patrones socio-educativos mediante algoritmos de clasificación.
+</div>
 
 ### ⚙️ Metodología
 
@@ -46,13 +48,27 @@ El flujo de trabajo aplicado sigue las siguientes etapas:
 
         Métricas clave: Accuracy, Recall y F1-Score para evaluar la precisión y capacidad de generalización del modelo.
 
+#
+
 ### 📊 Conclusiones
 
-    Desempeño: Los modelos de ensamble como XGBoost (Accuracy: 89.5%, F1-Score: 89.1%) y Random Forest (Accuracy: 88.9%, F1-Score: 88.2%) mostraron el mejor desempeño en la tarea de clasificación.
+**Conclusión Técnica**
 
-    Importancia del Enfoque: El uso de la mediana para definir la variable objetivo permitió trabajar con un dataset balanceado, lo cual es fundamental para que las métricas de Recall y F1-Score sean fiables y no estén sesgadas hacia una clase mayoritaria.
+<div align="justify">
+El modelo seleccionado para este trabajo es **XGBoost**, ya que presentó el mejor desempeño general con una **precisión del 89.5% y el F1-score más alto (0.8914)**. Fue el modelo más robusto. Su arquitectura de Gradient Boosting le permite corregir errores de árboles anteriores de forma iterativa, lo que resultó ideal para capturar patrones complejos y no lineales entre las tasas de diferentes niveles educativos. Si no se elije este modelo se puede elegir **Random Forest ya que presentó el segundo mejor desempeño general con una precisión del 88.5% y el segundo mejor F1-score (0.8824)**. Al ser un conjunto de múltiples árboles de decisión, redujo significativamente el riesgo de sobreajuste (overfitting). Es excelente para manejar variables que tienen rangos muy distintos (como tasas vs. miles de estudiantes) sin perder precisión. Finalmente **Decision Tree presenta el tercer mejor modelo precisión del 87.55% y F1-score (0.8721)**. Aunque es más simple, demostró una eficacia sorprendente. Su alta precisión indica que existen reglas de decisión muy claras y directas en los datos (por ejemplo: "Si la tasa de secundaria es > X, entonces la primaria femenina es > Y").
 
-    Insight Educativo: El análisis confirma que la estabilidad del sistema educativo es el predictor más fuerte. La variabilidad observada en niveles de secundaria sugiere que la retención en secundaria alta es el eslabón crítico para cerrar la brecha de género en la matrícula educativa.
+**Hallazgos en el Dataset**
+
+A partir del Análisis Exploratorio de Datos (EDA) y el entrenamiento de los modelos, se identificaron los siguientes tres puntos críticos:
+
+**1.- Dependencia Inter-Nivel (Efecto Cascada):** El hallazgo más fuerte es la alta correlación entre la educación secundaria y la primaria. Los modelos identificaron que la Tasa de Matrícula en Secundaria Baja es el predictor más fiable para la estabilidad de la matrícula primaria femenina. Esto sugiere que los países que logran retener a las niñas en la secundaria tienden a tener sistemas de educación primaria mucho más sólidos y universales.
+
+**2.- Simetría de Género en Políticas Educativas:** Existe una correlación extremadamente alta (superior a 0.90 en muchos casos) entre las tasas de matrícula de hombres y mujeres dentro de una misma región. Esto indica que, a nivel global, las fluctuaciones en la matrícula suelen responder a factores estructurales del país (economía, infraestructura, estabilidad política) que afectan a ambos géneros, más que a políticas aisladas para un solo sexo.
+
+**3.- Variabilidad Crítica en Secundaria Alta:** Mientras que la educación primaria muestra tasas cercanas al 100% en muchas regiones (baja variabilidad), la Secundaria Alta presenta los "boxplots" más dispersos y con más valores atípicos. Este nivel educativo es el verdadero diferenciador entre regiones en desarrollo y regiones desarrolladas, y es donde el modelo encuentra más "ruido" o dificultad para predecir, señalando que es el eslabón más frágil de la cadena educativa global.
+
+Este análisis confirma que para mejorar la matrícula femenina, no basta con enfocarse en la primaria; el éxito está intrínsecamente ligado a la capacidad del sistema para proyectar a las estudiantes hacia niveles secundarios.
+</div>
 
 ### 🛠️ Tecnologías Utilizadas
 
