@@ -1,90 +1,70 @@
-# Maestría en Inteligencia Artificial
-# Asignatura: Aprendizaje Automático
-# Trabajo de la semana 2
-## Grupo Nro. 5
-- Harold Rodrigo Angulo Arellano
-- Melissa Figallo Sánchez
-- Jorge Javier Maldonado Mahuad
-- Paula Elizabeth Noboa Ramírez
+***
 
-#
-## **Clasificación de Matrícula Educativa (Mujeres)**
-<div align="justify">
-Este proyecto compara 8 modelos clasificadores de aprendizaje supervisado para predecir si una mujer se matricula en educación primaria, basándose en un conjunto de indicadores educativos globales (datos_educativos.csv). Los modelos clasificadores utilizados fueron: Árboles de Decisión, SVM, Random Forest, Regresión Logística, KNN, Naive Bayes, SVC y XGBoost.
-</div>
+# Maestría en Inteligencia Artificial — Análisis de Ventaja de Género en Educación
 
-### 📝 Descripción del Problema
-<div align="justify">
-El desafío consiste en clasificar la probabilidad de matrícula educativa femenina. Se utiliza la tasa de matrícula primaria como referencia: si es superior a la mediana global, se etiqueta como "1" (se matricula), de lo contrario como "0". El objetivo es identificar patrones socio-educativos mediante algoritmos de clasificación.
-</div>
+![Python](https://img.shields.io/badge/python-3.10%2B-blue.svg)
+![Scikit-Learn](https://img.shields.io/badge/scikit--learn-latest-orange.svg)
+![Estado](https://img.shields.io/badge/status-completado-success.svg)
 
-### ⚙️ Metodología
+Este repositorio contiene el análisis comparativo y la implementación de modelos de aprendizaje supervisado para predecir la **Ventaja de Género Educativa** a nivel mundial, utilizando datos de la UNESCO. El proyecto se enfoca en la selección de modelos robustos para el diagnóstico de políticas educativas.
 
-El flujo de trabajo aplicado sigue las siguientes etapas:
+---
 
-    1.- Análisis Exploratorio de Datos (EDA):
+## 👤 Equipo de Trabajo
+- **Harold Rodrigo Angulo Arellano**
+- **Melissa Figallo Sánchez**
+- **Jorge Javier Maldonado Mahauad**
+- **Paula Elizabeth Noboa Ramírez**
 
-        Carga y limpieza de datos (filtrado por género y nivel educativo).
+---
 
-        Visualización de distribuciones y relaciones entre variables mediante gráficos de dispersión y correlación.
+## 📋 Tabla de Contenidos
+1. [Descripción del Problema](#-dataset)
+2. [Metodología](#-dataset)
+3. [Modelos Implementados](#-dataset)
+4. [Resultados Clave](#-dataset)
+5. [Dataset](#-dataset)
+6. [Licencia](#-dataset)
+---
 
-    2.- Preprocesamiento:
+## 🚀 Descripción del Problema
+El desafío consiste en clasificar la ventaja de género en educación (si un país favorece a mujeres o hombres en matriculación) mediante indicadores globales. El objetivo es identificar patrones socio-educativos mediante algoritmos de clasificación, evitando el sesgo de *data leakage* al utilizar estadísticos históricos agregados en lugar de variables deterministas.
 
-        Pivotado: Transformación del dataset a formato ancho (País-Año).
+---
 
-        Imputación: Manejo de valores faltantes mediante la mediana.
+## ⚙️ Metodología
+El flujo de trabajo sigue las mejores prácticas de Ciencia de Datos:
+1. **Análisis Exploratorio (EDA):** Limpieza y tratamiento de datos faltantes (UNESCO UIS).
+2. **Preprocesamiento:** Transformación de formato largo a ancho (pivotado por País-Año).
+3. **Ingeniería de Características:** Creación de variables de contexto histórico para evitar fugas de datos.
+4. **Modelado:** Entrenamiento de 8 modelos de clasificación supervisada.
+5. **Evaluación:** Comparación mediante métricas de AUC-ROC, F1-Score y precisión.
 
-        Codificación: Uso de LabelEncoder para variables categóricas.
+---
 
-        Normalización: Aplicación de StandardScaler para estandarizar las características numéricas, garantizando un desempeño óptimo en modelos como SVM y KNN.
+## 🤖 Modelos Implementados
+Comparamos el rendimiento de los siguientes algoritmos:
+* **Decision Tree**
+* **SVM (Linear & SVC)**
+* **Random Forest** (Modelo recomendado)
+* **Regresión Logística**
+* **KNN**
+* **Naive Bayes**
+* **XGBoost**
 
-    3.- Modelado:
+---
 
-        Entrenamiento de múltiples clasificadores: Árboles de Decisión, SVM, Random Forest, Regresión Logística, KNN, Naive Bayes y XGBoost.
+## 📊 Resultados Clave
+El modelo **Random Forest** demostró ser el más eficaz para la implementación.
+* **AUC-ROC:** ~0.86
+* **Interpretabilidad:** Alta, gracias a la importancia de las *features* integradas.
+* **Robustez:** Excelente manejo de *outliers* y distribuciones no normales presentes en los indicadores globales.
 
-        División de datos: 80% entrenamiento y 20% prueba.
+> *Nota: Se recomienda utilizar el cuaderno `Grupo nro 5.ipynb` para visualizar los gráficos de importancia de variables y las curvas ROC.*
 
-    4.- Evaluación:
+---
 
-        Métricas clave: Accuracy, Recall y F1-Score para evaluar la precisión y capacidad de generalización del modelo.
-
-#
-
-### 📊 Conclusiones
-
-**Conclusión Técnica**
-
-<div align="justify">
-El modelo seleccionado para este trabajo es **XGBoost**, ya que presentó el mejor desempeño general con una **precisión del 89.5% y el F1-score más alto (0.8914)**. Fue el modelo más robusto. Su arquitectura de Gradient Boosting le permite corregir errores de árboles anteriores de forma iterativa, lo que resultó ideal para capturar patrones complejos y no lineales entre las tasas de diferentes niveles educativos. Si no se elije este modelo se puede elegir **Random Forest ya que presentó el segundo mejor desempeño general con una precisión del 88.5% y el segundo mejor F1-score (0.8824)**. Al ser un conjunto de múltiples árboles de decisión, redujo significativamente el riesgo de sobreajuste (overfitting). Es excelente para manejar variables que tienen rangos muy distintos (como tasas vs. miles de estudiantes) sin perder precisión. Finalmente **Decision Tree presenta el tercer mejor modelo precisión del 87.55% y F1-score (0.8721)**. Aunque es más simple, demostró una eficacia sorprendente. Su alta precisión indica que existen reglas de decisión muy claras y directas en los datos (por ejemplo: "Si la tasa de secundaria es > X, entonces la primaria femenina es > Y").
-
-**Hallazgos en el Dataset**
-
-A partir del Análisis Exploratorio de Datos (EDA) y el entrenamiento de los modelos, se identificaron los siguientes tres puntos críticos:
-
-**1.- Dependencia Inter-Nivel (Efecto Cascada):** El hallazgo más fuerte es la alta correlación entre la educación secundaria y la primaria. Los modelos identificaron que la Tasa de Matrícula en Secundaria Baja es el predictor más fiable para la estabilidad de la matrícula primaria femenina. Esto sugiere que los países que logran retener a las niñas en la secundaria tienden a tener sistemas de educación primaria mucho más sólidos y universales.
-
-**2.- Simetría de Género en Políticas Educativas:** Existe una correlación extremadamente alta (superior a 0.90 en muchos casos) entre las tasas de matrícula de hombres y mujeres dentro de una misma región. Esto indica que, a nivel global, las fluctuaciones en la matrícula suelen responder a factores estructurales del país (economía, infraestructura, estabilidad política) que afectan a ambos géneros, más que a políticas aisladas para un solo sexo.
-
-**3.- Variabilidad Crítica en Secundaria Alta:** Mientras que la educación primaria muestra tasas cercanas al 100% en muchas regiones (baja variabilidad), la Secundaria Alta presenta los "boxplots" más dispersos y con más valores atípicos. Este nivel educativo es el verdadero diferenciador entre regiones en desarrollo y regiones desarrolladas, y es donde el modelo encuentra más "ruido" o dificultad para predecir, señalando que es el eslabón más frágil de la cadena educativa global.
-
-Este análisis confirma que para mejorar la matrícula femenina, no basta con enfocarse en la primaria; el éxito está intrínsecamente ligado a la capacidad del sistema para proyectar a las estudiantes hacia niveles secundarios.
-</div>
-
-### 🛠️ Tecnologías Utilizadas
-
-    Python
-
-    Pandas / NumPy (Manipulación de datos)
-
-    Scikit-learn (Modelado y métricas)
-
-    Seaborn / Matplotlib (Visualización)
-
-    XGBoost
-
-#
-
-### Sobre el dataset datos_educativos.csv
+## Sobre el dataset datos_educativos.csv
 
 El dataset datos_educativos.csv, contiene información educativa que incluye tasas de matrícula. Está estructurado con registros para diferentes países, años y tipos de datos educativos, junto con la tasa correspondiente y la fuente de los datos.
 
@@ -103,3 +83,11 @@ Variables Disponibles: Las variables disponibles en el dataset original son:
 - Tasa: El valor numérico de la tasa educativa.
 - Fuente Datos: La fuente de donde se obtuvo el dato educativo.
 
+---
+
+## ⚖️ Licencia
+Este proyecto se distribuye bajo la licencia MIT. 
+
+*Fuente de datos: UNESCO Institute for Statistics (UIS) — último acceso: abril 2023.*
+
+---
